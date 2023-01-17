@@ -35,54 +35,56 @@ module.exports = function toReadable (number) {
      char1 = digit;
     } 
     else if (i === (number.toString().length - 2)) {
-      if (number.toString()[i] === 2) {
+      if (number.toString()[i] ==='1') {
         char1 = '';
         switch (number.toString().slice(i)) {
           case '10': char2 = 'ten';
           break;
-          case '11': char2 = 'eleven ';
+          case '11': char2 = 'eleven';
           break;
-          case '12': char2 = 'twelve ';
+          case '12': char2 = 'twelve';
           break;
-          case '13': char2 = 'thirteen ';
+          case '13': char2 = 'thirteen';
           break;
-          case '14': char2 = 'fourteen ';
+          case '14': char2 = 'fourteen';
           break;
-          case '15': char2 = 'fifteen ';
+          case '15': char2 = 'fifteen';
           break;
-          case '16': char2 = 'sixteen ';
+          case '16': char2 = 'sixteen';
           break;
-          case '17': char2 = 'seventeen ';
+          case '17': char2 = 'seventeen';
           break;
-          case '18': char2 = 'eighteen ';
+          case '18': char2 = 'eighteen';
           break;
-          case '19': char2 = 'nineteen ';
+          case '19': char2 = 'nineteen';
           break;
         }
-      } else if (number.toString()[i] >= 2) {
+      } else {
         switch (number.toString()[i]) {
-          case '2': char2 = 'twenty ';
+          case '2': char2 = 'twenty';
           break;
-          case '3': char2 = 'thirty ';
+          case '3': char2 = 'thirty';
           break;
-          case '4': char2 = 'forty ';
+          case '4': char2 = 'forty';
           break;
-          case '5': char2 = 'fifty ';
+          case '5': char2 = 'fifty';
           break;
-          case '6': char2 = 'sixty ';
+          case '6': char2 = 'sixty';
           break;
-          case '7': char2 = 'seventy ';
+          case '7': char2 = 'seventy';
           break;
-          case '8': char2 = 'eighty ';
+          case '8': char2 = 'eighty';
           break;
-          case '9': char2 = 'ninety ';
+          case '9': char2 = 'ninety';
           break;
         }
       }
     } else if (i === (number.toString().length - 3)) {
-      char3 = `${digit}${' hundred '}`
+      char3 = `${digit}${' hundred'}`
     }
     i = i - 1;
   };
-  return (`${char3}${char2}${char1}`);
+  let result = [char3,char2,char1].join(' ');
+  result = result.replace(/\s+/g, ' ').trim();
+  return (result);
 }
